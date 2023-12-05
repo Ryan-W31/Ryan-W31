@@ -38,10 +38,8 @@
 <p align="center">
   <img title="Git" height= 50 src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg'>
   <img title="Visual Studio Code" height= 50 src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg'>
-  <img title="GitHub" height= 50 src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg'>
   <img title="Jupyter Notebook" height= 50 src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg'>
   <img title="MongoDB Atlas" height= 50 src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg'>
-  <img title="Eclipse" height= 50 src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eclipse/eclipse-original.svg'>
 </p>
 
 <p align="center">
