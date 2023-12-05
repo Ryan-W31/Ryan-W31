@@ -27,11 +27,11 @@
   <img title="Python" height= 50 src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg'>
   <img title="Java" height= 50 src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg'>
   <img title="JavaScript" height= 50 src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg'>
+  <img title="HTML5" height= 50 src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'>
+  <img title="CSS3" height= 50 src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'>
   <img title="MySQL" height= 50 src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg'>
   <img title="React" height= 50 src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg'>
   <img title="Node.js" height= 50 src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg'>
-  <img title="HTML5" height= 50 src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'>
-  <img title="CSS" height= 50 src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'>
 </p>
 
 <hr>
@@ -46,6 +46,6 @@
 
 <p align="center">
   <a href="https://github.com/anuraghazra/github-readme-stats">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Ryan-W31&layout=compact&langs_count=7&text_color=daf7dc&bg_color=151515&hide=scss,css,php,dart" alt="Top Langs">
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Ryan-W31&layout=donut&langs_count=7&text_color=087099&bg_color=27272a&hide=scss,css,php,dart" alt="Top Langs">
   </a>
 </p>
