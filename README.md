@@ -46,6 +46,6 @@
 
 <p align="center">
   <a href="https://github.com/anuraghazra/github-readme-stats">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Ryan-W31&layout=compact&langs_count=7&text_color=daf7dc&bg_color=151515&hide=scss,css,html,php,dart" alt="Top Langs">
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Ryan-W31&layout=compact&langs_count=7&text_color=daf7dc&bg_color=151515&hide=scss,php,dart" alt="Top Langs">
   </a>
 </p>
