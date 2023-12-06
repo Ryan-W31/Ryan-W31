@@ -12,7 +12,7 @@
   Hi, I'm Ryan Weisman
   <br>
   <br>
-  🎓 I'm currently an undergraduate student stufying Computer Science at the University of Central Florida.
+  🎓 I'm currently an undergraduate student studying Computer Science at the University of Central Florida.
   <br>
   <br>
   📫 How to reach me: <a href="mailto: ryan.weisman.512@gmail.com">ryan.weisman.512@gmail.com</a>
