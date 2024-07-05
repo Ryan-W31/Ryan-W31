@@ -11,7 +11,7 @@
 </h5>
 </p>
 
-<p align="center">Check out my <a href="https://ryan-w31.github.io/Ryan-W31">portfolio</a></p>
+<p align="center">Check out my <a href="https://ryan-w31.github.io">portfolio</a></p>
 
 <p align="center">
   <a href="https://github.com/anuraghazra/github-readme-stats">
