@@ -28,22 +28,36 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: "npm"
           cache-dependency-path: "./portfolio/package-lock.json"
+
       - name: Install dependencies
         run: npm ci
+
       - name: Build
         run: npm run build
+
+      # New step to list files in the working directory after build
+      - name: List files after build
+        run: ls -la
+
+      # New step to list files in the dist directory
+      - name: List dist files
+        run: ls -la dist
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: "./dist"
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
