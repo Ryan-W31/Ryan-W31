@@ -54,10 +54,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "dist" # Path relative to the working directory
-
-      - name: Debug - Check if dist exists
-        run: if [ -d "dist" ]; then echo "dist directory exists"; else echo "dist directory does not exist"; fi
+          path: ./dist # Path relative to the working directory
 
       - name: Deploy to GitHub Pages
         id: deployment
