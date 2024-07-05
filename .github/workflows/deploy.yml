@@ -15,10 +15,6 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 
-defaults:
-  run:
-    working-directory: portfolio
-
 jobs:
   deploy:
     environment:
@@ -54,7 +50,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./portfolio/dist # Path relative to the working directory
+          path: ./dist # Path relative to the working directory
 
       - name: Deploy to GitHub Pages
         id: deployment

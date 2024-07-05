@@ -69,7 +69,7 @@ function App() {
 
           <img
             className="h-auto rounded-lg border-light-secondary border-2"
-            src="../public/Ry-Grad-Pic.png"
+            src="../Ryan-W31/Ry-Grad-Pic.png"
           />
           <p class="text-xl text-light-primary mt-4">
             I'm Ryan, and welcome to my portfolio.
@@ -288,20 +288,20 @@ function App() {
             <figure className="w-1/3 h-auto">
               <img
                 className="rounded-lg"
-                src="../public/7854150432__MG_4043.jpg"
+                src="../Ryan-W31/7854150432__MG_4043.jpg"
               />
               <figcaption className="text-light-primary text-center">
                 Nassau, The Bahamas
               </figcaption>
             </figure>
             <figure className="w-1/3 h-auto">
-              <img className="rounded-lg" src="../public/IMG_0624.jpg" />
+              <img className="rounded-lg" src="../Ryan-W31/IMG_0624.JPG" />
               <figcaption className="text-light-primary text-center">
                 Henderson, NV (Hometown)
               </figcaption>
             </figure>
             <figure className="w-1/3 h-auto">
-              <img className="rounded-lg" src="../public/_MG_9862.jpg" />
+              <img className="rounded-lg" src="../Ryan-W31/_MG_9862.jpg" />
               <figcaption className="text-light-primary text-center">
                 Chimney Rock, NC
               </figcaption>
