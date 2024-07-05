@@ -1,7 +1,3 @@
-<h5 align="center">
-  <a href="https://www.linkedin.com/in/ryanweisman/" title="LinkedIn Profile"><img width="22" src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg'></a>
-</h5>
-<br>
 <p align="center">
   Hi, I'm Ryan!
   <br>
@@ -10,7 +6,12 @@
   <br>
   <br>
   📫 How to reach me: <a href="mailto: ryan.weisman.512@gmail.com">ryan.weisman.512@gmail.com</a>
+  <h5 align="center">
+  <a href="https://www.linkedin.com/in/ryanweisman/" title="LinkedIn Profile"><img width="22" src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg'></a>
+</h5>
 </p>
+
+<p align="center">Check out my <a href="https://ryan-w31.github.io/Ryan-W31">portfolio</a></p>
 
 <p align="center">
   <a href="https://github.com/anuraghazra/github-readme-stats">
