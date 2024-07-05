@@ -42,12 +42,10 @@ jobs:
       - name: Build
         run: npm run build
 
-      # New step to list files in the working directory after build
       - name: List files after build
         run: ls -la
 
-      # New step to list files in the dist directory
-      - name: List dist files
+      - name: List files in dist
         run: ls -la dist
 
       - name: Setup Pages
@@ -56,7 +54,10 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "dist"
+          path: "dist" # Path relative to the working directory
+
+      - name: Debug - Check if dist exists
+        run: if [ -d "dist" ]; then echo "dist directory exists"; else echo "dist directory does not exist"; fi
 
       - name: Deploy to GitHub Pages
         id: deployment
