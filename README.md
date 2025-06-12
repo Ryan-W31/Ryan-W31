@@ -2,10 +2,10 @@
   Hi, I'm Ryan!
   <br>
   <br>
-  I'm currently an GenAI Platform Engineer at Apple ! I graduated with a B.S. in Computer Science from the University of Central Florida 🎓.
+  I'm currently a Software Engineer at Apple ! I graduated with a B.S. in Computer Science from the University of Central Florida 🎓.
   <br>
   <br>
-  📫 How to reach me: <a href="mailto: ryan.weisman.512@gmail.com">ryan.weisman.512@gmail.com</a>
+  📫 Feel free to reach out here -> <a href="mailto: ryan.weisman.512@gmail.com">ryan.weisman.512@gmail.com</a>
   <h5 align="center">
   <a href="https://www.linkedin.com/in/ryanweisman/" title="LinkedIn Profile"><img width="22" src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg'></a>
 </h5>
