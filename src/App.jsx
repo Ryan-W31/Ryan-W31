@@ -1,15 +1,14 @@
 function App() {
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
+    document.querySelectorAll('.sscroll').forEach((element) => { // Changed selector to '.sscroll'
+        element.addEventListener("click", function (e) {
+        e.preventDefault();
 
-            const id = 'profilePhoto';
-            const yOffset = -100; 
-            const element = document.querySelector(this.getAttribute("href"));
-            const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+        // For now, assuming .sscroll elements still have hrefs
+        const targetElement = document.querySelector(this.getAttribute("href"));
+        const yOffset = -100;
+        const y = targetElement.getBoundingClientRect().top + window.scrollY + yOffset;
 
-            window.scrollTo({top: y, behavior: 'smooth'});
-        });
+        window.scrollTo({ top: y, behavior: 'smooth' });
     });
     return (
         <div className="font-mono">
@@ -17,7 +16,7 @@ function App() {
                 <div class="flex flex-wrap items-center justify-between mx-auto p-4">
                     <a
                         href="#about"
-                        class="flex items-center space-x-3 rtl:space-x-reverse"
+                        class="flex items-center space-x-3 rtl:space-x-reverse sscroll"
                     >
                         <span class="self-center text-2xl font-semibold whitespace-nowrap text-light-primary">
                             Ryan Weisman
@@ -28,7 +27,7 @@ function App() {
                             <li>
                                 <a
                                     href="#about"
-                                    class="block py-2 px-3 rounded text-light-primary hover:text-light-secondary"
+                                    class="block py-2 px-3 rounded text-light-primary hover:text-light-secondary sscroll"
                                 >
                                     About
                                 </a>
@@ -36,7 +35,7 @@ function App() {
                             <li>
                                 <a
                                     href="#exp"
-                                    class="block py-2 px-3 rounded text-light-primary hover:text-light-secondary"
+                                    class="block py-2 px-3 rounded text-light-primary hover:text-light-secondary sscroll"
                                 >
                                     Experience
                                 </a>
@@ -44,7 +43,7 @@ function App() {
                             <li>
                                 <a
                                     href="#proj"
-                                    class="block py-2 px-3 rounded text-light-primary hover:text-light-secondary"
+                                    class="block py-2 px-3 rounded text-light-primary hover:text-light-secondary sscroll"
                                 >
                                     Projects
                                 </a>
@@ -52,7 +51,7 @@ function App() {
                             <li>
                                 <a
                                     href="#contact"
-                                    class="block py-2 px-3 rounded text-light-primary hover:text-light-secondary"
+                                    class="block py-2 px-3 rounded text-light-primary hover:text-light-secondary sscroll"
                                 >
                                     Contact
                                 </a>
@@ -84,7 +83,7 @@ function App() {
                     </h1>
                     <ul className="text-light-primary text-left text-xl space-y-4">
                         <li>
-                            &#127891; I'm a GenAI platform engineer at Apple in Austin, TX. I graduated from the University of Central
+                            &#127891; I'm currently a Software Engineer at Apple in Austin, TX. I graduated from the University of Central
               Florida with a B.S. in Computer Science.
                         </li>
                         <br/>
@@ -118,17 +117,19 @@ function App() {
                     <p class="text-light-primary text-center text-xl p-2">
                         As I begin my career, I'm always looking for interesting problems to solve.
                         <br/>
-                        I'm eager to learn and grown professionally and personally!
+                        I'm eager to learn and grow professionally and personally!
                     </p>
                 </div>
                 <div className="flex flex-col justify-center items-center space-y-4 m-8 p-8 rounded-lg bg-dark-primary border-light-secondary border-2">
                     <h1 class="text-4xl font-bold text-light-primary">Apple, Inc.</h1>
                     <p class="text-light-primary text-center">
-                        GenAI Platform Engineer
+                        Software Engineer
                     </p>
                     <p class="text-light-secondary text-center">January 2025 - Present</p>
                     <ul class="text-light-primary text-center space-y-2">
-                        <li>Coming Soon...</li>
+                        <li>- Developed and maintained ingestion services for Apple’s internal generative AI platform, powering RAG workflows used by over <b className="text-light-secondary">200</b> internal applications.</li>
+                        <li>- Designed scalable microservices using Kubernetes and Kafka to accommodate <b className="text-light-secondary">3M+</b> weekly requests.</li>
+                        <li>- Replaced a critical legacy system with a modern, streamlined Java Spring solution to improve developer accessibility and reduce document ingestion time by <b className="text-light-secondary">30%</b>.</li>
                     </ul>
                 </div>
                 <div className="flex flex-col justify-center items-center space-y-4 m-8 p-8 rounded-lg bg-dark-primary border-light-secondary border-2">
