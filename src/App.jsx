@@ -39,7 +39,7 @@ function App() {
         className="flex flex-row items-center justify-between h-screen m-12 bg-dark-secondary rounded-lg border-light-secondary border-2 scroll-mt-20"
       >
         <div class="flex flex-col items-center justify-center w-1/2">
-          <h1 class="text-6xl font-bold text-light-primary mb-4">Hello, World! &#x1F44B;</h1>
+          <h1 class="text-4xl font-bold text-light-primary mb-4">Hello, World! &#x1F44B;</h1>
 
           <img className="h-auto rounded-lg border-light-secondary border-2" src="../Ryan-W31/Ry-Grad-Pic.png" />
           <p class="text-xl text-light-primary mt-4">I'm Ryan, and welcome to my portfolio.</p>
