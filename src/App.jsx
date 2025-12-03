@@ -4,7 +4,9 @@ function App() {
       <nav class="sticky inset-x-0 top-0 z-50 w-full border-b-2 border-rose bg-dark-secondary">
         <div class="flex flex-wrap items-center justify-between mx-auto p-4">
           <a href="#about" class="flex items-center space-x-3 rtl:space-x-reverse ">
-            <span class="self-center text-2xl font-semibold whitespace-nowrap text-foam">Ryan Weisman</span>
+            <span class="self-center text-2xl font-semibold whitespace-nowrap text-foam hover:text-pine">
+              Ryan Weisman
+            </span>
           </a>
           <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-rose rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-dark-secondary">
@@ -192,7 +194,7 @@ function App() {
             className="flex flex-col justify-center items-center space-y-4 m-8 p-8 border-pine hover:border-love border-2 bg-dark-primary rounded-lg"
             href="https://github.com/Ryan-W31/QBxR"
           >
-            <h1 class="text-4xl font-bold text-foam">QBxR: NFL Quarterback Rating System</h1>
+            <h1 class="text-4xl text-center font-bold text-foam">QBxR: NFL Quarterback Rating System</h1>
             <p class="text-iris text-center text-xl">MongoDB | Express.js | React | Node.js | Docker | AWS</p>
             <ul class="text-light-primary text-center space-y-2">
               <li>- Served as Project Manager and Full-Stack Developer for a senior capstone project.</li>
@@ -239,11 +241,11 @@ function App() {
           </p>
           <p class="text-light-primary text-center w-1/2">
             You can also find me on{" "}
-            <a href="https://www.linkedin.com/in/ryanweisman/" className="text-foam hover:text-love">
+            <a href="https://www.linkedin.com/in/ryanweisman/" className="text-foam hover:text-pine">
               LinkedIn
             </a>{" "}
             and{" "}
-            <a href="https://github.com/Ryan-W31" className="text-foam hover:text-love">
+            <a href="https://github.com/Ryan-W31" className="text-foam hover:text-pine">
               GitHub
             </a>
             .
