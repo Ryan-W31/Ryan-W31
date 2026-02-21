@@ -1,266 +1,623 @@
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  Menu, 
+  X, 
+  Github, 
+  Linkedin, 
+  Mail, 
+  ExternalLink,
+  Terminal,
+  Code2,
+  Cpu,
+  Database,
+  Cloud,
+  ChevronDown
+} from 'lucide-react';
+
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+  }
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+};
+
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: 'About', href: '#about' },
+    { name: 'Experience', href: '#experience' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Contact', href: '#contact' },
+  ];
+
   return (
-    <div className="font-mono">
-      <nav class="sticky inset-x-0 top-0 z-50 w-full border-b-2 border-rose bg-dark-secondary">
-        <div class="flex flex-wrap items-center justify-between mx-auto p-4">
-          <a href="#about" class="flex items-center space-x-3 rtl:space-x-reverse ">
-            <span class="self-center text-2xl font-semibold whitespace-nowrap text-foam hover:text-pine">
-              Ryan Weisman
-            </span>
-          </a>
-          <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-rose rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-dark-secondary">
-              <li>
-                <a href="#about" class="block py-2 px-3 rounded text-light-primary hover:text-love">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#exp" class="block py-2 px-3 rounded text-light-primary hover:text-love">
-                  Experience
-                </a>
-              </li>
-              <li>
-                <a href="#proj" class="block py-2 px-3 rounded text-light-primary hover:text-love">
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a href="#contact" class="block py-2 px-3 rounded text-light-primary hover:text-love">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <section
-        id="about"
-        className="flex flex-row items-center justify-between m-12 p-12 bg-dark-secondary rounded-lg border-rose border-2 scroll-mt-12"
+    <div className="min-h-screen bg-base font-sans overflow-x-hidden">
+      {/* Navigation */}
+      <motion.nav 
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? 'glass border-b border-highlight-med/30' : 'bg-transparent'}`}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
-        <div class="flex flex-col space-y-4 items-center w-1/2">
-          <p class="text-6xl text-light-primary">Hi, I'm Ryan !</p>
-          <img className="h-auto rounded-lg border-rose border-2" src="../Ryan-W31/SF.jpeg" />
-          <p class="text-sm text-foam mt-4">That's me in San Francisco (Go Knights Go !!)</p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <motion.a 
+              href="#" 
+              className="flex items-center gap-2 group"
+              whileHover={{ scale: 1.02 }}
+            >
+              <Terminal className="w-5 h-5 text-foam" />
+              <span className="text-lg font-semibold text-text group-hover:text-foam transition-colors">
+                Ryan Weisman
+              </span>
+            </motion.a>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-8">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-sm text-subtle hover:text-foam transition-colors link-hover"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+
+            {/* Social Links - Desktop */}
+            <div className="hidden md:flex items-center gap-4">
+              <a href="https://github.com/Ryan-W31" target="_blank" rel="noopener noreferrer" 
+                className="text-subtle hover:text-foam transition-colors">
+                <Github className="w-5 h-5" />
+              </a>
+              <a href="https://www.linkedin.com/in/ryanweisman/" target="_blank" rel="noopener noreferrer"
+                className="text-subtle hover:text-foam transition-colors">
+                <Linkedin className="w-5 h-5" />
+              </a>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden p-2 text-subtle hover:text-foam transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
-        <div class="flex flex-col items-center justify-center w-1/2 p-12">
-          <h1 class="text-4xl font-bold text-foam mb-4 w-full text-left">A little about me...</h1>
-          <ul className="text-light-primary text-left text-xl space-y-4">
-            <li>
-              I'm currently a Software Engineer at Apple, Inc. in Austin, TX. I graduated from the University of
-              Central Florida with a B.S. in Computer Science.
-            </li>
-            <br />
-            <li>
-              <p className="mb-2 mt-2">
-                <span className="text-foam">Some of my favorite (developer) things at the moment:</span>
-                <li>
-                  <li className="font-bold text-sm">
-                    - <span className="text-gold">Font:</span> <span className="font-normal">Zed Mono</span>
-                  </li>
-                  <li className="font-bold text-sm">
-                    - <span className="text-gold">Editor:</span> <span className="font-normal">Neovim</span>
-                  </li>
-                  <li className="font-bold text-sm">
-                    - <span className="text-gold">Theme:</span> <span className="font-normal">Rosé Pine</span>
-                  </li>
-                  <li className="font-bold text-sm">
-                    - <span className="text-gold">Terminal Emulator:</span>{" "}
-                    <span className="font-normal">Ghostty</span>
-                  </li>
-                </li>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden glass border-t border-highlight-med/30"
+            >
+              <div className="px-4 py-4 space-y-2">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block py-2 text-subtle hover:text-foam transition-colors"
+                  >
+                    {link.name}
+                  </a>
+                ))}
+                <div className="flex gap-4 pt-4 border-t border-highlight-med/30">
+                  <a href="https://github.com/Ryan-W31" target="_blank" rel="noopener noreferrer"
+                    className="text-subtle hover:text-foam transition-colors">
+                    <Github className="w-5 h-5" />
+                  </a>
+                  <a href="https://www.linkedin.com/in/ryanweisman/" target="_blank" rel="noopener noreferrer"
+                    className="text-subtle hover:text-foam transition-colors">
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.nav>
+
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
+        <div className="max-w-7xl mx-auto w-full">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+            className="grid lg:grid-cols-2 gap-12 items-center"
+          >
+            {/* Text Content */}
+            <div className="order-2 lg:order-1">
+              <motion.div variants={fadeInUp} className="flex items-center gap-2 mb-4">
+                <span className="px-3 py-1 text-xs font-medium bg-pine/10 text-pine rounded-full border border-pine/20">
+                  Software Engineer @ Apple
+                </span>
+              </motion.div>
+              
+              <motion.h1 variants={fadeInUp} className="text-4xl sm:text-5xl lg:text-6xl font-bold text-text mb-6">
+                Hi, I'm <span className="gradient-text">Ryan</span>
+              </motion.h1>
+              
+              <motion.p variants={fadeInUp} className="text-lg text-subtle mb-6 max-w-lg">
+                Building scalable systems and solving interesting problems. 
+                Currently working on Apple's internal generative AI platform.
+              </motion.p>
+              
+              <motion.div variants={fadeInUp} className="flex flex-wrap gap-4 mb-8">
+                <a 
+                  href="#projects" 
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-foam text-base font-medium rounded-lg hover:bg-foam/90 transition-colors"
+                >
+                  View Projects
+                  <ChevronDown className="w-4 h-4" />
+                </a>
+                <a 
+                  href="#contact" 
+                  className="inline-flex items-center gap-2 px-6 py-3 border border-foam/30 text-foam font-medium rounded-lg hover:bg-foam/10 transition-colors"
+                >
+                  Get in Touch
+                </a>
+              </motion.div>
+
+              {/* Tech Stack Tags */}
+              <motion.div variants={fadeInUp} className="flex flex-wrap gap-2">
+                {['Rust', 'Python', 'Java', 'Kubernetes', 'AWS', 'React'].map((tech) => (
+                  <span key={tech} className="px-3 py-1 text-xs text-muted border border-highlight-med rounded-md">
+                    {tech}
+                  </span>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Image */}
+            <motion.div variants={scaleIn} className="order-1 lg:order-2 flex justify-center">
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-r from-pine/20 to-iris/20 rounded-2xl blur-2xl" />
+                <img 
+                  src="/Ryan-W31/SF.jpeg" 
+                  alt="Ryan in San Francisco" 
+                  className="relative w-64 h-64 sm:w-80 sm:h-80 object-cover rounded-2xl border-2 border-rose/30"
+                />
+                <motion.div 
+                  className="absolute -bottom-4 -right-4 bg-surface border border-highlight-med px-4 py-2 rounded-lg shadow-xl"
+                  animate={{ y: [0, -5, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <span className="text-sm text-foam font-mono">Go Knights Go!</span>
+                </motion.div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <motion.div 
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <ChevronDown className="w-6 h-6 text-muted" />
+        </motion.div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="grid lg:grid-cols-2 gap-12"
+          >
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-text mb-6">
+                A little about <span className="text-foam">me</span>
+              </h2>
+              <div className="space-y-4 text-subtle">
+                <p>
+                  I'm a Software Engineer at Apple in Austin, TX, working on the internal generative AI platform 
+                  that powers RAG workflows for 200+ internal applications. I graduated from the University of 
+                  Central Florida with a B.S. in Computer Science.
+                </p>
+                <p>
+                  I love building things that are both functional and elegant — from terminal multiplexers in Rust 
+                  to distributed systems handling millions of requests.
+                </p>
+              </div>
+
+              {/* Developer Setup */}
+              <div className="mt-8 p-6 bg-surface rounded-xl border border-highlight-med/30">
+                <h3 className="text-lg font-semibold text-foam mb-4 flex items-center gap-2">
+                  <Terminal className="w-5 h-5" />
+                  Current Setup
+                </h3>
+                <div className="grid grid-cols-2 gap-4 text-sm">
+                  <div className="flex items-center gap-2">
+                    <span className="text-gold">Font:</span>
+                    <span className="text-text">Zed Mono</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-gold">Editor:</span>
+                    <span className="text-text">Neovim</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-gold">Theme:</span>
+                    <span className="text-text">Rosé Pine</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-gold">Terminal:</span>
+                    <span className="text-text">Ghostty</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Interests */}
+            <div>
+              <h3 className="text-xl font-semibold text-text mb-6">Interests & Hobbies</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                {[
+                  { icon: '📚', label: 'Reading', desc: 'Brandon Sanderson' },
+                  { icon: '⛳', label: 'Sports' },
+                  { icon: '📷', label: 'Photography' },
+                  { icon: '🥾', label: 'Hiking' },
+                  { icon: '✈️', label: 'Traveling' },
+                  { icon: '🏍️', label: 'Motorcycles' },
+                ].map((item) => (
+                  <motion.div 
+                    key={item.label}
+                    whileHover={{ scale: 1.02 }}
+                    className="p-4 bg-surface rounded-lg border border-highlight-med/30 hover:border-foam/30 transition-colors"
+                  >
+                    <span className="text-2xl mb-2 block">{item.icon}</span>
+                    <span className="text-text font-medium">{item.label}</span>
+                    {item.desc && <span className="text-xs text-muted block mt-1">{item.desc}</span>}
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8 bg-surface/30">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="text-center mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-text mb-4">Experience</h2>
+              <p className="text-subtle max-w-2xl mx-auto">
+                I like making cool stuff and solving cool problems in cool (and efficient) ways.
               </p>
-            </li>
-            <br />
-            <li>
-              <span className="text-foam">Some of my other interests and hobbies include:</span>
-              <li className="text-sm">- Reading (I love everything Brandon Sanderson !) &#x1F4DA;</li>
-              <li className="text-sm">- Sports &#x26F3;</li>
-              <li className="text-sm">- Photography &#x1F4F7;</li>
-              <li className="text-sm">- Hiking &#x1F9D7;</li>
-              <li className="text-sm">- Travelling &#x1F6EB;</li>
-              <li className="text-sm">- Motorcycles &#x1F3CD;</li>
-            </li>
-          </ul>
-        </div>
-      </section>
-      <section id="exp" className="flex space-x-8 m-12 items-center justify-between scroll-mt-24">
-        <div className="w-2/3 bg-dark-secondary rounded-lg border-rose border-2">
-          <div>
-            <h1 class="text-6xl font-bold text-gold text-center my-4">Experience</h1>
-            <p class="text-light-primary text-center text-xl p-2">
-              I like making cool stuff and solving cool problems in cool (and efficient) ways.
-            </p>
-          </div>
-          <div className="flex flex-col justify-center items-center space-y-4 m-8 p-8 rounded-lg bg-dark-primary border-pine border-2">
-            <h1 class="text-4xl font-bold text-foam">Apple, Inc.</h1>
-            <p class="text-iris text-center">Software Engineer</p>
-            <p class="text-pine text-center">January 2025 - Present</p>
-            <ul class="text-light-primary text-center space-y-2">
-              <li>
-                - Developing and maintaining the ingestion services for Apple’s internal generative AI platform,
-                powering RAG workflows used by over <b className="text-light-secondary">200</b> internal
-                applications.
-              </li>
-              <li>
-                - Designed scalable microservices using Kubernetes and Kafka to accommodate{" "}
-                <b className="text-light-secondary">3M+</b> weekly requests.
-              </li>
-              <li>
-                - Replaced a critical legacy system with a modern Java Spring solution to improve developer
-                accessibility and reduce document ingestion time by <b className="text-light-secondary">30%</b>.
-              </li>
-            </ul>
-          </div>
-          <div className="flex flex-col justify-center items-center space-y-4 m-8 p-8 rounded-lg bg-dark-primary border-pine border-2">
-            <h1 class="text-4xl font-bold text-foam">Deltek, Inc.</h1>
-            <p class="text-iris text-center">Data and Analytics Intern</p>
-            <p class="text-pine text-center">June 2023 - August 2023</p>
-            <ul class="text-light-primary text-center space-y-2">
-              <li>
-                - Developed a classification model to assist sales representatives in identifying favorable
-                customer interactions.
-              </li>
+            </div>
 
-              <li>
-                - Collaborated with an IT team to test and refine a classification algorithm, achieving{" "}
-                <b className="text-light-secondary">98%</b> accuracy.
-              </li>
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* Apple */}
+              <motion.div 
+                whileHover={{ y: -4 }}
+                className="group bg-surface rounded-2xl p-8 border border-highlight-med/30 card-glow"
+              >
+                <div className="flex items-start justify-between mb-6">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 bg-pine/10 rounded-xl">
+                      <Cpu className="w-6 h-6 text-pine" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-foam">Apple, Inc.</h3>
+                      <p className="text-sm text-iris">Software Engineer</p>
+                    </div>
+                  </div>
+                  <span className="text-sm text-muted font-mono">Jan 2025 - Present</span>
+                </div>
+                <ul className="space-y-3 text-subtle">
+                  <li className="flex items-start gap-3">
+                    <span className="text-foam mt-1.5">•</span>
+                    <span>Developing ingestion services for Apple's internal generative AI platform, powering RAG workflows for <strong className="text-text">200+</strong> internal applications</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-foam mt-1.5">•</span>
+                    <span>Designed scalable microservices using Kubernetes and Kafka for <strong className="text-text">3M+</strong> weekly requests</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-foam mt-1.5">•</span>
+                    <span>Replaced legacy system with Java Spring solution, reducing ingestion time by <strong className="text-text">30%</strong></span>
+                  </li>
+                </ul>
+              </motion.div>
 
-              <li>
-                - Utilized Pandas, NumPy, and Matplotlib to test and visually analyze datasets comprising of{" "}
-                <b className="text-light-secondary">1,000+</b> customers.
-              </li>
+              {/* Deltek */}
+              <motion.div 
+                whileHover={{ y: -4 }}
+                className="group bg-surface rounded-2xl p-8 border border-highlight-med/30 card-glow"
+              >
+                <div className="flex items-start justify-between mb-6">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 bg-iris/10 rounded-xl">
+                      <Database className="w-6 h-6 text-iris" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-foam">Deltek, Inc.</h3>
+                      <p className="text-sm text-iris">Data & Analytics Intern</p>
+                    </div>
+                  </div>
+                  <span className="text-sm text-muted font-mono">Jun 2023 - Aug 2023</span>
+                </div>
+                <ul className="space-y-3 text-subtle">
+                  <li className="flex items-start gap-3">
+                    <span className="text-foam mt-1.5">•</span>
+                    <span>Developed classification model for sales reps to identify favorable customer interactions</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-foam mt-1.5">•</span>
+                    <span>Refined classification algorithm achieving <strong className="text-text">98%</strong> accuracy</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-foam mt-1.5">•</span>
+                    <span>Engineered Python script using GPT-4, attaining <strong className="text-text">81%</strong> accuracy</span>
+                  </li>
+                </ul>
+              </motion.div>
+            </div>
+          </motion.div>
 
-              <li>
-                - Engineered a specialized Python script incorporating OpenAI's GPT-4, attaining{" "}
-                <b className="text-light-secondary">81%</b> accuracy.
-              </li>
-            </ul>
-          </div>
-        </div>
-        <figure className="w-1/3 h-auto space-y-4">
-          <img className="rounded-lg border-2 border-rose" src="../Ryan-W31/7854150432__MG_4043.jpg" />
-          <figcaption className="text-pine text-center text-sm">
-            I snapped this photo in Nassau, The Bahamas
-          </figcaption>
-        </figure>
-      </section>
-      <section id="proj" className="flex items-center justify-between m-12 scroll-mt-24 space-x-8">
-        <figure className="w-1/3 h-auto space-y-4">
-          <img className="rounded-lg border-2 border-rose" src="../Ryan-W31/_MG_9862.jpg" />
-          <figcaption className="text-pine text-center text-sm">
-            And this one was taken in Chimney Rock, NC
-          </figcaption>
-        </figure>
-        <div className="w-2/3 border-2 border-rose rounded-lg bg-dark-secondary">
-          <div>
-            <h1 class="text-6xl font-bold text-gold text-center my-4">Projects</h1>
-            <p class="text-light-primary text-center text-xl p-2">
-              Here are some school and personal projects I've worked on (click on one):
-            </p>
-          </div>
-          <a
-            className="flex flex-col justify-center items-center space-y-4 m-8 p-8 border-pine hover:border-love border-2 bg-dark-primary rounded-lg"
-            href="https://github.com/Prometheus1400/remux"
+          {/* Photo */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-12 text-center"
           >
-            <h1 class="text-4xl font-bold text-foam">remux</h1>
-            <p class="text-iris text-center text-xl">Rust</p>
-            <ul class="text-light-primary text-center space-y-2">
-              <li>- Revamping tmux by building a terminal multiplexer from the ground up using Rust.</li>
-            </ul>
-          </a>
-          <a
-            className="flex flex-col justify-center items-center space-y-4 m-8 p-8 border-pine hover:border-love border-2 bg-dark-primary rounded-lg"
-            href="https://github.com/Ryan-W31/myGPT2"
-          >
-            <h1 class="text-4xl font-bold text-foam">myGPT-2</h1>
-            <p class="text-iris text-xl text-center">Python | PyTorch | Jupyter Notebook</p>
-            <ul class="text-light-primary text-center space-y-2">
-              <li>
-                - Built a <b className="text-light-secondary">124M+</b> parameter GPT-2 clone based on OpenAI's
-                GPT-2 model.
-              </li>
-              <li>
-                - Implemented the <b className="text-light-secondary">10B</b> token Hugging Face FineWeb-Edu
-                dataset for training.
-              </li>
-              <li>
-                - Leveraged the PyTorch library for efficient use of CUDA and distributed parallel processing.
-              </li>
-            </ul>
-          </a>
-          <a
-            className="flex flex-col justify-center items-center space-y-4 m-8 p-8 border-pine hover:border-love border-2 bg-dark-primary rounded-lg"
-            href="https://github.com/Ryan-W31/QBxR"
-          >
-            <h1 class="text-4xl text-center font-bold text-foam">QBxR: NFL Quarterback Rating System</h1>
-            <p class="text-iris text-center text-xl">MongoDB | Express.js | React | Node.js | Docker | AWS</p>
-            <ul class="text-light-primary text-center space-y-2">
-              <li>- Served as Project Manager and Full-Stack Developer for a senior capstone project.</li>
-              <li>
-                - Utilized Agile methodology to collaborate within a team setting and produce a{" "}
-                <b className="text-light-secondary">150+</b> page technical document outlining research, system
-                design, and implementation.
-              </li>
-              <li>
-                - Implemented cloud infrastructure by leveraging &gt;5 AWS products, including EC2, S3, VPC, and
-                more.
-              </li>
-            </ul>
-          </a>
-
-          <a
-            className="flex flex-col justify-center items-center space-y-4 m-8 p-8 border-pine hover:border-love border-2 bg-dark-primary rounded-lg"
-            href="https://github.com/Ryan-W31/PL0-Compiler"
-          >
-            <h1 class="text-4xl font-bold text-foam">PL/0 Virtual Machine</h1>
-            <p class="text-iris text-center text-xl">C</p>
-            <ul class="text-light-primary text-center space-y-2">
-              <li>
-                - Designed and implemented a PL/0 compiler using C, complete with a syntax parser and code
-                generator.
-              </li>
-              <li>
-                - Engineered an assembler and virtual machine capable of executing basic programs and rendering
-                output to the screen.
-              </li>
-            </ul>
-          </a>
-        </div>
-      </section>
-      <section id="contact" class="scroll-mt-24">
-        <div class="flex flex-col items-center justify-center bg-dark-secondary border-2 border-rose m-8 p-8 rounded-lg space-y-4">
-          <h1 class="text-6xl font-bold text-gold">Contact</h1>
-          <p class="text-light-primary text-center w-1/2">
-            If you'd like to get in touch, feel free to send me an email at:{" "}
-            <a href="mailto:ryan.weisman.512@gmail.com" className="text-iris hover:text-love">
-              ryan.weisman.512@gmail.com
-            </a>
-            .
-          </p>
-          <p class="text-light-primary text-center w-1/2">
-            You can also find me on{" "}
-            <a href="https://www.linkedin.com/in/ryanweisman/" className="text-foam hover:text-pine">
-              LinkedIn
-            </a>{" "}
-            and{" "}
-            <a href="https://github.com/Ryan-W31" className="text-foam hover:text-pine">
-              GitHub
-            </a>
-            .
-          </p>
-          <p class="text-light-primary text-center w-1/2">Thanks for stopping by !</p>
-          <div className="flex flex-row space-x-4 items-center justify-center">
-            <figure className="w-1/2 h-auto space-y-4">
-              <img className="rounded-lg border-2 border-rose" src="../Ryan-W31/IMG_0624.JPG" />
-              <figcaption className="text-light-primary text-center">
-                This is my hometown Henderson, NV (just outside of Las Vegas)
+            <figure className="inline-block">
+              <img 
+                src="/Ryan-W31/7854150432__MG_4043.jpg" 
+                alt="Nassau, The Bahamas" 
+                className="w-full max-w-md h-64 object-cover rounded-xl border border-rose/30"
+              />
+              <figcaption className="mt-3 text-sm text-muted">
+                Snapped in Nassau, The Bahamas
               </figcaption>
             </figure>
-          </div>
+          </motion.div>
         </div>
       </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="text-center mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-text mb-4">Projects</h2>
+              <p className="text-subtle max-w-2xl mx-auto">
+                School and personal projects I've worked on. Click any card to view on GitHub.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-8">
+              {[
+                {
+                  name: 'remux',
+                  tech: 'Rust',
+                  icon: Terminal,
+                  iconColor: 'text-rose',
+                  bgColor: 'bg-rose/10',
+                  description: 'Revamping tmux by building a terminal multiplexer from the ground up using Rust.',
+                  href: 'https://github.com/Prometheus1400/remux'
+                },
+                {
+                  name: 'myGPT-2',
+                  tech: 'Python | PyTorch',
+                  icon: Code2,
+                  iconColor: 'text-gold',
+                  bgColor: 'bg-gold/10',
+                  description: 'Built a 124M+ parameter GPT-2 clone with Hugging Face FineWeb-Edu dataset for training.',
+                  highlights: ['124M+ parameters', '10B token dataset', 'CUDA & distributed processing'],
+                  href: 'https://github.com/Ryan-W31/myGPT2'
+                },
+                {
+                  name: 'QBxR',
+                  tech: 'MongoDB | Express | React | Node | AWS',
+                  icon: Cloud,
+                  iconColor: 'text-pine',
+                  bgColor: 'bg-pine/10',
+                  description: 'NFL Quarterback Rating System — Senior capstone project with Agile methodology.',
+                  highlights: ['Project Manager', '150+ page tech doc', '5+ AWS products'],
+                  href: 'https://github.com/Ryan-W31/QBxR'
+                },
+                {
+                  name: 'PL/0 Virtual Machine',
+                  tech: 'C',
+                  icon: Cpu,
+                  iconColor: 'text-iris',
+                  bgColor: 'bg-iris/10',
+                  description: 'Compiler with syntax parser and code generator, plus assembler and virtual machine.',
+                  href: 'https://github.com/Ryan-W31/PL0-Compiler'
+                }
+              ].map((project, index) => (
+                <motion.a
+                  key={project.name}
+                  href={project.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ y: -4 }}
+                  className="group block bg-surface rounded-2xl p-8 border border-highlight-med/30 hover:border-foam/30 transition-all card-glow"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center gap-4">
+                      <div className={`p-3 ${project.bgColor} rounded-xl`}>
+                        <project.icon className={`w-6 h-6 ${project.iconColor}`} />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-foam group-hover:text-foam/80 transition-colors">
+                          {project.name}
+                        </h3>
+                        <p className="text-sm text-iris">{project.tech}</p>
+                      </div>
+                    </div>
+                    <ExternalLink className="w-5 h-5 text-muted group-hover:text-foam transition-colors" />
+                  </div>
+                  <p className="text-subtle mb-4">{project.description}</p>
+                  {project.highlights && (
+                    <div className="flex flex-wrap gap-2">
+                      {project.highlights.map((highlight) => (
+                        <span key={highlight} className="px-2 py-1 text-xs bg-highlight-low text-muted rounded">
+                          {highlight}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Photo */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-12 text-center"
+          >
+            <figure className="inline-block">
+              <img 
+                src="/Ryan-W31/_MG_9862.jpg" 
+                alt="Chimney Rock, NC" 
+                className="w-full max-w-md h-64 object-cover rounded-xl border border-rose/30"
+              />
+              <figcaption className="mt-3 text-sm text-muted">
+                Taken in Chimney Rock, NC
+              </figcaption>
+            </figure>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 bg-surface/30">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold text-text mb-4">Get in Touch</h2>
+            <p className="text-subtle max-w-2xl mx-auto mb-12">
+              Interested in collaborating or just want to chat? Feel free to reach out.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
+              <a 
+                href="mailto:ryan.weisman.512@gmail.com"
+                className="flex items-center gap-3 px-8 py-4 bg-foam text-base font-medium rounded-xl hover:bg-foam/90 transition-colors"
+              >
+                <Mail className="w-5 h-5" />
+                ryan.weisman.512@gmail.com
+              </a>
+            </div>
+
+            <div className="flex items-center justify-center gap-6">
+              <a 
+                href="https://github.com/Ryan-W31" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 text-subtle hover:text-foam transition-colors"
+              >
+                <Github className="w-5 h-5" />
+                <span>GitHub</span>
+              </a>
+              <a 
+                href="https://www.linkedin.com/in/ryanweisman/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 text-subtle hover:text-foam transition-colors"
+              >
+                <Linkedin className="w-5 h-5" />
+                <span>LinkedIn</span>
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Hometown Photo */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-16 text-center"
+          >
+            <figure className="inline-block">
+              <img 
+                src="/Ryan-W31/IMG_0624.JPG" 
+                alt="Henderson, NV" 
+                className="w-full max-w-lg h-64 object-cover rounded-xl border border-rose/30"
+              />
+              <figcaption className="mt-3 text-sm text-muted">
+                My hometown — Henderson, NV (just outside Las Vegas)
+              </figcaption>
+            </figure>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-highlight-med/30">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-muted">
+            © {new Date().getFullYear()} Ryan Weisman. Built with React & Tailwind CSS.
+          </p>
+          <p className="text-sm text-muted">
+            Theme: <span className="text-rose">Rosé Pine</span>
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
