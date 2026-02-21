@@ -206,7 +206,7 @@ function App() {
                 <img 
                   src="/Ryan-W31/SF.jpeg" 
                   alt="Ryan in San Francisco" 
-                  className="relative w-64 h-64 sm:w-80 sm:h-80 object-cover rounded-2xl border-2 border-rose/30"
+                  className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 object-cover rounded-2xl border-2 border-rose/30"
                 />
                 <motion.div 
                   className="absolute -bottom-4 -right-4 bg-surface border border-highlight-med px-4 py-2 rounded-lg shadow-xl"
@@ -408,7 +408,7 @@ function App() {
               <img 
                 src="/Ryan-W31/7854150432__MG_4043.jpg" 
                 alt="Nassau, The Bahamas" 
-                className="w-full max-w-md h-64 object-cover rounded-xl border border-rose/30"
+                className="w-full max-w-md lg:max-w-xl h-64 lg:h-80 object-cover rounded-xl border border-rose/30"
               />
               <figcaption className="mt-3 text-sm text-muted">
                 Snapped in Nassau, The Bahamas
@@ -528,7 +528,7 @@ function App() {
               <img 
                 src="/Ryan-W31/_MG_9862.jpg" 
                 alt="Chimney Rock, NC" 
-                className="w-full max-w-md h-64 object-cover rounded-xl border border-rose/30"
+                className="w-full max-w-md lg:max-w-xl h-64 lg:h-80 object-cover rounded-xl border border-rose/30"
               />
               <figcaption className="mt-3 text-sm text-muted">
                 Taken in Chimney Rock, NC
@@ -597,7 +597,7 @@ function App() {
               <img 
                 src="/Ryan-W31/IMG_0624.JPG" 
                 alt="Henderson, NV" 
-                className="w-full max-w-lg h-64 object-cover rounded-xl border border-rose/30"
+                className="w-full max-w-lg lg:max-w-2xl h-64 lg:h-96 object-cover rounded-xl border border-rose/30"
               />
               <figcaption className="mt-3 text-sm text-muted">
                 My hometown — Henderson, NV (just outside Las Vegas)
