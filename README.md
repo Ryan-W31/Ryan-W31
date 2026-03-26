@@ -2,7 +2,7 @@
 
 # Ryan Weisman
 
-**Software Engineer @ Apple** | Austin, TX
+**Software Engineer @ Credit Karma** | Charlotte, NC
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-rose--pine?style=flat-square&logo=github&logoColor=white)](https://ryan-w31.github.io/Ryan-W31)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ryanweisman/)
@@ -12,7 +12,7 @@
 
 ## About Me
 
-Hi there! I'm Ryan, a Software Engineer at Apple working on internal generative AI platforms. I graduated from the University of Central Florida with a B.S. in Computer Science.
+Hi there! I'm Ryan, a Software Engineer at Credit Karma working on the Insurance team. I previously worked at Apple doing generative AI platform work, and graduated from the University of Central Florida with a B.S. in Computer Science.
 
 I enjoy building scalable systems, solving interesting problems, and writing efficient code. When I'm not coding, you'll find me reading (Brandon Sanderson fan!), hiking, traveling, or out on my motorcycle.
 
@@ -20,7 +20,7 @@ I enjoy building scalable systems, solving interesting problems, and writing eff
 
 | Category | Choice |
 |----------|--------|
-| **Font** | Zed Mono |
+| **Font** | Zed Mono Extended (Iosevka) |
 | **Editor** | Neovim |
 | **Theme** | Rosé Pine |
 | **Terminal** | Ghostty |
